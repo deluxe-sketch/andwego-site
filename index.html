@@ -6,6 +6,8 @@
 <meta name="description" content="부산 호텔 웨딩 전문 영상, 프리미엄 시네마틱 웨딩영상 제작 앤위고">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+
 <style>
 :root {
   --bg: #050505;
@@ -14,7 +16,6 @@
   --text: rgba(255,255,255,0.92);
   --muted: rgba(255,255,255,0.65);
   --gold: #c9a55b;
-  --gold-soft: rgba(201,165,91,0.18);
   --white: #ffffff;
 }
 
@@ -28,7 +29,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Pretendard', sans-serif;
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -51,7 +52,7 @@ iframe {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0,0,0,0.36);
+  background: rgba(0,0,0,0.30);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
@@ -67,10 +68,11 @@ iframe {
 
 .brand {
   font-size: 13px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   color: var(--white);
   text-decoration: none;
   white-space: nowrap;
+  font-weight: 300;
 }
 
 .nav {
@@ -86,11 +88,12 @@ iframe {
   letter-spacing: 2px;
   text-decoration: none;
   color: rgba(255,255,255,0.84);
-  transition: color 0.25s ease, opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+  font-weight: 300;
 }
 
 .nav a:hover {
-  color: var(--gold);
+  opacity: 0.6;
 }
 
 .hero {
@@ -102,7 +105,7 @@ iframe {
   text-align: center;
   padding: 120px 20px 80px;
   background:
-    linear-gradient(to bottom, rgba(0,0,0,0.50), rgba(0,0,0,0.72)),
+    linear-gradient(to bottom, rgba(0,0,0,0.48), rgba(0,0,0,0.78)),
     linear-gradient(to right, rgba(0,0,0,0.28), rgba(0,0,0,0.18)),
     url('https://images.unsplash.com/photo-1507504031003-b417219a0fde') center/cover no-repeat;
 }
@@ -125,20 +128,24 @@ iframe {
   display: inline-block;
   margin-bottom: 18px;
   padding: 7px 14px;
-  border: 1px solid rgba(201,165,91,0.35);
-  background: rgba(0,0,0,0.18);
-  color: var(--gold);
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.12);
+  color: rgba(255,255,255,0.82);
   font-size: 11px;
   letter-spacing: 2px;
+  font-weight: 300;
 }
 
 .hero h1 {
   margin: 0;
   font-size: clamp(42px, 7vw, 82px);
   line-height: 1.06;
-  font-weight: 500;
-  letter-spacing: 7px;
+  font-weight: 300;
+  letter-spacing: 10px;
   color: var(--white);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
 }
 
 .hero p {
@@ -147,6 +154,10 @@ iframe {
   font-size: 15px;
   line-height: 1.9;
   color: rgba(255,255,255,0.82);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.4s;
 }
 
 .hero-buttons {
@@ -155,42 +166,55 @@ iframe {
   gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.8s;
 }
 
 .btn {
   min-width: 170px;
-  padding: 14px 24px;
+  padding: 14px 40px;
   text-decoration: none;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   font-size: 12px;
   transition: all 0.3s ease;
+  font-weight: 300;
 }
 
 .btn-primary {
-  border: 1px solid var(--gold);
-  color: #111;
-  background: var(--gold);
+  border: 1px solid rgba(255,255,255,0.45);
+  color: #fff;
+  background: transparent;
 }
 
 .btn-primary:hover {
-  background: transparent;
-  color: var(--gold);
+  background: #fff;
+  color: #000;
 }
 
 .btn-secondary {
-  border: 1px solid rgba(255,255,255,0.26);
-  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.78);
   background: transparent;
 }
 
 .btn-secondary:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: rgba(255,255,255,0.45);
+  color: #fff;
 }
 
 .section {
   padding: 120px 20px;
   position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-dark {
@@ -214,16 +238,17 @@ iframe {
 .section-kicker {
   display: inline-block;
   margin-bottom: 16px;
-  color: var(--gold);
+  color: rgba(255,255,255,0.64);
   font-size: 12px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  font-weight: 300;
 }
 
 .section-head h2 {
   margin: 0;
   font-size: clamp(28px, 4vw, 44px);
-  letter-spacing: 4px;
-  font-weight: 500;
+  letter-spacing: 5px;
+  font-weight: 400;
   color: var(--white);
 }
 
@@ -233,6 +258,7 @@ iframe {
   color: var(--muted);
   line-height: 1.9;
   font-size: 15px;
+  font-weight: 300;
 }
 
 .about-copy {
@@ -242,6 +268,7 @@ iframe {
   color: var(--muted);
   font-size: 15px;
   line-height: 2;
+  font-weight: 300;
 }
 
 .film-block + .film-block {
@@ -250,10 +277,11 @@ iframe {
 
 .film-category {
   margin-bottom: 26px;
-  color: var(--gold);
-  letter-spacing: 2px;
-  font-size: 14px;
+  color: rgba(255,255,255,0.76);
+  letter-spacing: 3px;
+  font-size: 13px;
   text-align: left;
+  font-weight: 300;
 }
 
 .film-grid {
@@ -270,7 +298,7 @@ iframe {
 
 .film-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(201,165,91,0.35);
+  border-color: rgba(255,255,255,0.18);
   box-shadow: 0 14px 32px rgba(0,0,0,0.24);
 }
 
@@ -300,6 +328,7 @@ iframe {
   font-size: 15px;
   letter-spacing: 1px;
   color: var(--white);
+  font-weight: 400;
 }
 
 .film-desc {
@@ -307,6 +336,7 @@ iframe {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.7;
+  font-weight: 300;
 }
 
 .info-grid {
@@ -325,7 +355,7 @@ iframe {
 }
 
 .info-card:hover {
-  border-color: rgba(201,165,91,0.35);
+  border-color: rgba(255,255,255,0.16);
   transform: translateY(-3px);
 }
 
@@ -334,6 +364,7 @@ iframe {
   font-size: 16px;
   letter-spacing: 1px;
   color: var(--white);
+  font-weight: 400;
 }
 
 .info-card p {
@@ -341,6 +372,7 @@ iframe {
   color: var(--muted);
   line-height: 1.9;
   font-size: 14px;
+  font-weight: 300;
 }
 
 .process-grid {
@@ -358,10 +390,11 @@ iframe {
 }
 
 .process-no {
-  color: var(--gold);
+  color: rgba(255,255,255,0.50);
   font-size: 12px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   margin-bottom: 18px;
+  font-weight: 300;
 }
 
 .process-title {
@@ -369,6 +402,7 @@ iframe {
   font-size: 15px;
   color: var(--white);
   line-height: 1.5;
+  font-weight: 400;
 }
 
 .process-desc {
@@ -376,6 +410,7 @@ iframe {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.8;
+  font-weight: 300;
 }
 
 .contact-wrap {
@@ -388,6 +423,7 @@ iframe {
   color: var(--muted);
   line-height: 1.9;
   font-size: 15px;
+  font-weight: 300;
 }
 
 .contact-buttons {
@@ -401,17 +437,18 @@ iframe {
 .contact-btn {
   width: min(340px, 100%);
   padding: 15px 18px;
-  border: 1px solid rgba(201,165,91,0.45);
-  color: var(--gold);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.86);
   text-decoration: none;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   font-size: 12px;
   transition: all 0.3s ease;
   background: transparent;
+  font-weight: 300;
 }
 
 .contact-btn:hover {
-  background: var(--gold);
+  background: #fff;
   color: #111;
 }
 
@@ -422,17 +459,15 @@ iframe {
   color: rgba(255,255,255,0.45);
   border-top: 1px solid var(--line);
   background: #030303;
+  letter-spacing: 2px;
+  font-weight: 300;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 1100px) {
@@ -524,7 +559,7 @@ iframe {
 </header>
 
 <section id="home" class="hero">
-  <div class="hero-content reveal">
+  <div class="hero-content">
     <div class="hero-kicker">PREMIUM WEDDING FILM</div>
     <h1>ANDWEGO</h1>
     <p>
@@ -540,11 +575,11 @@ iframe {
 
 <section id="about" class="section section-dark">
   <div class="container">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="section-kicker">ABOUT</div>
       <h2>시간이 지나도 다시 보고 싶은 장면</h2>
     </div>
-    <div class="about-copy reveal">
+    <div class="about-copy">
       단순한 기록이 아닌, 시간이 지나도 다시 보고 싶은 장면을 만듭니다.<br>
       부산 호텔 웨딩 전문 영상 제작 브랜드 앤위고는<br>
       감도 높은 시선과 정제된 구성으로 프리미엄 웨딩 필름을 제작합니다.
@@ -554,13 +589,13 @@ iframe {
 
 <section id="film" class="section section-soft">
   <div class="container">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="section-kicker">FILM</div>
       <h2>앤위고의 웨딩 필름</h2>
       <p>하이라이트 영상과 기록 영상을 분리해 보다 명확하게 안내합니다.</p>
     </div>
 
-    <div class="film-block reveal">
+    <div class="film-block">
       <div class="film-category">HIGHLIGHT FILM</div>
       <div class="film-grid">
         <article class="film-card">
@@ -585,7 +620,7 @@ iframe {
       </div>
     </div>
 
-    <div class="film-block reveal">
+    <div class="film-block">
       <div class="film-category">DOCUMENTARY FILM</div>
       <div class="film-grid">
         <article class="film-card">
@@ -614,14 +649,14 @@ iframe {
 
 <section id="service" class="section section-dark">
   <div class="container">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="section-kicker">SERVICE</div>
       <h2>앤위고의 촬영 구성</h2>
       <p>고객이 이해하기 쉽도록 영상 종류 기준으로 정리했습니다.</p>
     </div>
 
     <div class="info-grid">
-      <article class="info-card reveal">
+      <article class="info-card">
         <h3>HIGHLIGHT FILM</h3>
         <p>
           감정을 담은 시네마틱 웨딩 영상입니다.<br>
@@ -629,7 +664,7 @@ iframe {
         </p>
       </article>
 
-      <article class="info-card reveal">
+      <article class="info-card">
         <h3>DOCUMENTARY FILM</h3>
         <p>
           예식 전체를 담는 기록 영상입니다.<br>
@@ -637,7 +672,7 @@ iframe {
         </p>
       </article>
 
-      <article class="info-card reveal">
+      <article class="info-card">
         <h3>CUSTOM PACKAGE</h3>
         <p>
           예식 구성과 스타일에 맞춰 촬영 방향을 조율합니다.<br>
@@ -650,37 +685,37 @@ iframe {
 
 <section id="process" class="section section-soft">
   <div class="container">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="section-kicker">PROCESS</div>
       <h2>안심할 수 있는 진행 과정</h2>
     </div>
 
     <div class="process-grid">
-      <article class="process-card reveal">
+      <article class="process-card">
         <div class="process-no">01</div>
         <h3 class="process-title">상담 및 일정 안내</h3>
         <p class="process-desc">고객님의 일정과 예식 흐름을 충분히 파악합니다.</p>
       </article>
 
-      <article class="process-card reveal">
+      <article class="process-card">
         <div class="process-no">02</div>
         <h3 class="process-title">촬영 구성 설계</h3>
         <p class="process-desc">예식에 맞는 촬영 동선과 스타일을 안내드립니다.</p>
       </article>
 
-      <article class="process-card reveal">
+      <article class="process-card">
         <div class="process-no">03</div>
         <h3 class="process-title">웨딩 촬영 진행</h3>
         <p class="process-desc">자연스러운 순간을 중심으로 안정적으로 촬영합니다.</p>
       </article>
 
-      <article class="process-card reveal">
+      <article class="process-card">
         <div class="process-no">04</div>
         <h3 class="process-title">시네마틱 완성</h3>
         <p class="process-desc">음악과 분위기에 맞춰 완성도 높은 영상으로 제작됩니다.</p>
       </article>
 
-      <article class="process-card reveal">
+      <article class="process-card">
         <div class="process-no">05</div>
         <h3 class="process-title">최종 전달</h3>
         <p class="process-desc">완성된 영상을 안전하게 전달드립니다.</p>
@@ -691,12 +726,12 @@ iframe {
 
 <section id="contact" class="section section-dark">
   <div class="container">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="section-kicker">CONTACT</div>
       <h2>앤위고와 상담하기</h2>
     </div>
 
-    <div class="contact-wrap reveal">
+    <div class="contact-wrap">
       <div class="contact-copy">
         카카오톡, 인스타그램, 유튜브 채널을 통해<br>
         앤위고의 분위기와 영상을 먼저 확인해보실 수 있습니다.
@@ -716,19 +751,19 @@ iframe {
 </footer>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
+const sections = document.querySelectorAll(".section");
+
+window.addEventListener("scroll", () => {
+  const trigger = window.innerHeight * 0.85;
+  sections.forEach((section) => {
+    const top = section.getBoundingClientRect().top;
+    if (top < trigger) {
+      section.classList.add("show");
     }
   });
-}, {
-  threshold: 0.15
 });
 
-document.querySelectorAll(".reveal").forEach((el) => {
-  observer.observe(el);
-});
+window.dispatchEvent(new Event("scroll"));
 </script>
 
 </body>
