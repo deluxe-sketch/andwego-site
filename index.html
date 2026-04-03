@@ -7,11 +7,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
-  background: #000;
-  color: #fff;
+:root {
+  --bg: #050505;
+  --bg-soft: #0d0d0d;
+  --line: rgba(255,255,255,0.08);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.65);
+  --gold: #c9a55b;
+  --gold-soft: rgba(201,165,91,0.18);
+  --white: #ffffff;
 }
 
 * {
@@ -22,107 +26,252 @@ html {
   scroll-behavior: smooth;
 }
 
-header {
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+.header {
   position: fixed;
-  width: 100%;
   top: 0;
   left: 0;
-  padding: 20px 10px;
-  text-align: center;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(5px);
+  width: 100%;
   z-index: 1000;
+  background: rgba(0,0,0,0.36);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-header a {
-  margin: 0 18px;
-  color: #fff;
-  text-decoration: none;
+.nav-inner {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
   font-size: 13px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-header a:hover {
-  color: #d4af37;
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav a {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.84);
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.nav a:hover {
+  color: var(--gold);
 }
 
 .hero {
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1507504031003-b417219a0fde') center/cover no-repeat;
+  position: relative;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  padding: 0 20px;
+  padding: 120px 20px 80px;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.50), rgba(0,0,0,0.72)),
+    linear-gradient(to right, rgba(0,0,0,0.28), rgba(0,0,0,0.18)),
+    url('https://images.unsplash.com/photo-1507504031003-b417219a0fde') center/cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 180px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 100%);
+}
+
+.hero-kicker {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 7px 14px;
+  border: 1px solid rgba(201,165,91,0.35);
+  background: rgba(0,0,0,0.18);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  letter-spacing: 6px;
   margin: 0;
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 1.06;
+  font-weight: 500;
+  letter-spacing: 7px;
+  color: var(--white);
 }
 
 .hero p {
-  margin-top: 18px;
-  opacity: 0.85;
-  font-size: 16px;
+  width: min(680px, 100%);
+  margin: 22px auto 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.82);
+}
+
+.hero-buttons {
+  margin-top: 34px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn {
-  margin-top: 30px;
-  padding: 12px 30px;
-  border: 1px solid #d4af37;
-  color: #d4af37;
+  min-width: 170px;
+  padding: 14px 24px;
   text-decoration: none;
-  transition: 0.3s;
-  display: inline-block;
+  letter-spacing: 2px;
+  font-size: 12px;
+  transition: all 0.3s ease;
 }
 
-.btn:hover {
-  background: #d4af37;
-  color: #000;
+.btn-primary {
+  border: 1px solid var(--gold);
+  color: #111;
+  background: var(--gold);
 }
 
-section {
+.btn-primary:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.26);
+  color: var(--white);
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.section {
   padding: 120px 20px;
+  position: relative;
+}
+
+.section-dark {
+  background: var(--bg);
+}
+
+.section-soft {
+  background: var(--bg-soft);
+}
+
+.container {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.section-head {
+  margin-bottom: 54px;
   text-align: center;
 }
 
-h2 {
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-  font-size: 28px;
+.section-kicker {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 2px;
 }
 
-p {
-  max-width: 700px;
-  margin: auto;
-  opacity: 0.8;
-  line-height: 1.8;
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: 4px;
+  font-weight: 500;
+  color: var(--white);
 }
 
-/* FILM */
-.film-section {
-  max-width: 1200px;
-  margin: 0 auto 90px auto;
+.section-head p {
+  width: min(720px, 100%);
+  margin: 18px auto 0;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.about-copy {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 2;
+}
+
+.film-block + .film-block {
+  margin-top: 88px;
 }
 
 .film-category {
-  font-size: 18px;
+  margin-bottom: 26px;
+  color: var(--gold);
   letter-spacing: 2px;
-  margin-bottom: 30px;
-  color: #d4af37;
+  font-size: 14px;
+  text-align: left;
 }
 
 .film-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 28px;
 }
 
 .film-card {
-  text-align: left;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.film-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201,165,91,0.35);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.24);
 }
 
 .video-wrap {
@@ -130,60 +279,229 @@ p {
   width: 100%;
   padding-bottom: 56.25%;
   background: #111;
+  overflow: hidden;
 }
 
 .video-wrap iframe {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
+.film-meta {
+  padding: 18px 18px 20px;
+  text-align: left;
+}
+
 .film-title {
-  margin-top: 12px;
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.film-desc {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.info-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  padding: 28px 24px;
+  text-align: left;
+  min-height: 220px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.info-card:hover {
+  border-color: rgba(201,165,91,0.35);
+  transform: translateY(-3px);
+}
+
+.info-card h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.info-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.9;
   font-size: 14px;
 }
 
-/* SERVICE / PROCESS */
-.service-list,
-.process-list {
-  margin-top: 25px;
-  line-height: 2;
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  gap: 16px;
 }
 
-/* CONTACT */
+.process-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  padding: 24px 18px;
+  text-align: left;
+  min-height: 220px;
+}
+
+.process-no {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.process-title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.process-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.contact-wrap {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-copy {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 15px;
+}
+
 .contact-buttons {
-  margin-top: 40px;
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
 }
 
 .contact-btn {
-  display: block;
-  width: 280px;
-  margin: 15px auto;
-  padding: 14px;
-  border: 1px solid #d4af37;
-  color: #d4af37;
+  width: min(340px, 100%);
+  padding: 15px 18px;
+  border: 1px solid rgba(201,165,91,0.45);
+  color: var(--gold);
   text-decoration: none;
   letter-spacing: 2px;
-  transition: 0.3s;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
 .contact-btn:hover {
-  background: #d4af37;
-  color: #000;
+  background: var(--gold);
+  color: #111;
 }
 
-/* FOOTER */
-footer {
-  padding: 40px;
+.footer {
+  padding: 38px 20px 44px;
   text-align: center;
   font-size: 12px;
-  opacity: 0.5;
+  color: rgba(255,255,255,0.45);
+  border-top: 1px solid var(--line);
+  background: #030303;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {
+  .nav-inner {
+    min-height: auto;
+    padding: 16px 0;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nav {
+    gap: 14px;
+    justify-content: center;
+  }
+
   .film-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 92px 16px;
+  }
+
+  .brand {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .nav a {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .hero h1 {
+    letter-spacing: 4px;
+  }
+
+  .hero p,
+  .section-head p,
+  .about-copy,
+  .contact-copy,
+  .info-card p,
+  .process-desc {
+    font-size: 14px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 260px;
   }
 }
 </style>
@@ -191,119 +509,227 @@ footer {
 
 <body>
 
-<header>
-  <a href="#home">HOME</a>
-  <a href="#about">ABOUT</a>
-  <a href="#film">FILM</a>
-  <a href="#service">SERVICE</a>
-  <a href="#process">PROCESS</a>
-  <a href="#contact">CONTACT</a>
+<header class="header">
+  <div class="nav-inner">
+    <a href="#home" class="brand">ANDWEGO FILM</a>
+    <nav class="nav">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#film">FILM</a>
+      <a href="#service">SERVICE</a>
+      <a href="#process">PROCESS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </div>
 </header>
 
 <section id="home" class="hero">
-  <h1>ANDWEGO FILM</h1>
-  <p>당신의 가장 아름다운 순간을 영화처럼 기록합니다</p>
-  <a href="#contact" class="btn">상담 문의</a>
-</section>
-
-<section id="about">
-  <h2>ABOUT</h2>
-  <p>
-    단순한 기록이 아닌,<br>
-    시간이 지나도 다시 보고 싶은 장면을 만듭니다.<br><br>
-    부산 호텔 웨딩 전문 영상 제작.<br>
-    앤위고는 감도 높은 프리미엄 웨딩 필름을 제작합니다.
-  </p>
-</section>
-
-<section id="film">
-  <h2>FILM</h2>
-
-  <div class="film-section">
-    <div class="film-category">HIGHLIGHT FILM</div>
-    <div class="film-grid">
-      <div class="film-card">
-        <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
-        </div>
-        <div class="film-title">Highlight Film 01</div>
-      </div>
-
-      <div class="film-card">
-        <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
-        </div>
-        <div class="film-title">Highlight Film 02</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="film-section">
-    <div class="film-category">DOCUMENTARY FILM</div>
-    <div class="film-grid">
-      <div class="film-card">
-        <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
-        </div>
-        <div class="film-title">Documentary Film 01</div>
-      </div>
-
-      <div class="film-card">
-        <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_4"></iframe>
-        </div>
-        <div class="film-title">Documentary Film 02</div>
-      </div>
+  <div class="hero-content reveal">
+    <div class="hero-kicker">PREMIUM WEDDING FILM</div>
+    <h1>ANDWEGO</h1>
+    <p>
+      당신의 가장 아름다운 순간을<br>
+      오래도록 다시 보고 싶은 한 편의 장면으로 기록합니다.
+    </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">상담 문의</a>
+      <a href="#film" class="btn btn-secondary">FILM 보기</a>
     </div>
   </div>
 </section>
 
-<section id="service">
-  <h2>SERVICE</h2>
-  <div class="service-list">
-    <strong>HIGHLIGHT FILM</strong><br>
-    감정을 담은 시네마틱 웨딩 영상<br><br>
-
-    <strong>DOCUMENTARY FILM</strong><br>
-    예식 전체를 담는 기록 영상<br><br>
-
-    <strong>CUSTOM PACKAGE</strong><br>
-    촬영 구성 및 맞춤형 진행
+<section id="about" class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">ABOUT</div>
+      <h2>시간이 지나도 다시 보고 싶은 장면</h2>
+    </div>
+    <div class="about-copy reveal">
+      단순한 기록이 아닌, 시간이 지나도 다시 보고 싶은 장면을 만듭니다.<br>
+      부산 호텔 웨딩 전문 영상 제작 브랜드 앤위고는<br>
+      감도 높은 시선과 정제된 구성으로 프리미엄 웨딩 필름을 제작합니다.
+    </div>
   </div>
 </section>
 
-<section id="process">
-  <h2>PROCESS</h2>
-  <div class="process-list">
-    <strong>01 상담 및 일정 안내</strong><br>
-    고객님의 일정과 예식 흐름을 충분히 파악합니다<br><br>
+<section id="film" class="section section-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">FILM</div>
+      <h2>앤위고의 웨딩 필름</h2>
+      <p>하이라이트 영상과 기록 영상을 분리해 보다 명확하게 안내합니다.</p>
+    </div>
 
-    <strong>02 촬영 구성 설계</strong><br>
-    예식에 맞는 촬영 동선과 스타일을 안내드립니다<br><br>
+    <div class="film-block reveal">
+      <div class="film-category">HIGHLIGHT FILM</div>
+      <div class="film-grid">
+        <article class="film-card">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Highlight Film 01" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">Highlight Film 01</h3>
+            <div class="film-desc">감정선을 중심으로 구성한 시네마틱 하이라이트 영상입니다.</div>
+          </div>
+        </article>
 
-    <strong>03 웨딩 촬영 진행</strong><br>
-    자연스러운 순간을 중심으로 안정적으로 촬영합니다<br><br>
+        <article class="film-card">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Highlight Film 02" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">Highlight Film 02</h3>
+            <div class="film-desc">예식의 분위기와 디테일을 감도 있게 담아낸 대표 영상입니다.</div>
+          </div>
+        </article>
+      </div>
+    </div>
 
-    <strong>04 시네마틱 완성</strong><br>
-    음악과 분위기에 맞춰 완성도 높은 영상으로 제작됩니다<br><br>
+    <div class="film-block reveal">
+      <div class="film-category">DOCUMENTARY FILM</div>
+      <div class="film-grid">
+        <article class="film-card">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Documentary Film 01" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">Documentary Film 01</h3>
+            <div class="film-desc">예식의 전체 흐름을 차분하게 담아내는 기록형 영상입니다.</div>
+          </div>
+        </article>
 
-    <strong>05 최종 전달</strong><br>
-    완성된 영상을 안전하게 전달드립니다
+        <article class="film-card">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Documentary Film 02" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">Documentary Film 02</h3>
+            <div class="film-desc">본식의 순간들을 놓치지 않고 안정적으로 남기는 기록 영상입니다.</div>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2>CONTACT</h2>
-  <div class="contact-buttons">
-    <a href="https://open.kakao.com/o/여기코드" target="_blank" class="contact-btn">KAKAO TALK</a>
-    <a href="https://instagram.com/계정아이디" target="_blank" class="contact-btn">INSTAGRAM</a>
-    <a href="https://youtube.com/@채널아이디" target="_blank" class="contact-btn">YOUTUBE</a>
+<section id="service" class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">SERVICE</div>
+      <h2>앤위고의 촬영 구성</h2>
+      <p>고객이 이해하기 쉽도록 영상 종류 기준으로 정리했습니다.</p>
+    </div>
+
+    <div class="info-grid">
+      <article class="info-card reveal">
+        <h3>HIGHLIGHT FILM</h3>
+        <p>
+          감정을 담은 시네마틱 웨딩 영상입니다.<br>
+          분위기와 감정선, 디테일을 중심으로 완성도 높게 구성합니다.
+        </p>
+      </article>
+
+      <article class="info-card reveal">
+        <h3>DOCUMENTARY FILM</h3>
+        <p>
+          예식 전체를 담는 기록 영상입니다.<br>
+          중요한 순서와 장면을 안정적으로 담아 오래 남길 수 있도록 제작합니다.
+        </p>
+      </article>
+
+      <article class="info-card reveal">
+        <h3>CUSTOM PACKAGE</h3>
+        <p>
+          예식 구성과 스타일에 맞춰 촬영 방향을 조율합니다.<br>
+          상담을 통해 맞춤형 진행 방향을 안내드립니다.
+        </p>
+      </article>
+    </div>
   </div>
 </section>
 
-<footer>
+<section id="process" class="section section-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">PROCESS</div>
+      <h2>안심할 수 있는 진행 과정</h2>
+    </div>
+
+    <div class="process-grid">
+      <article class="process-card reveal">
+        <div class="process-no">01</div>
+        <h3 class="process-title">상담 및 일정 안내</h3>
+        <p class="process-desc">고객님의 일정과 예식 흐름을 충분히 파악합니다.</p>
+      </article>
+
+      <article class="process-card reveal">
+        <div class="process-no">02</div>
+        <h3 class="process-title">촬영 구성 설계</h3>
+        <p class="process-desc">예식에 맞는 촬영 동선과 스타일을 안내드립니다.</p>
+      </article>
+
+      <article class="process-card reveal">
+        <div class="process-no">03</div>
+        <h3 class="process-title">웨딩 촬영 진행</h3>
+        <p class="process-desc">자연스러운 순간을 중심으로 안정적으로 촬영합니다.</p>
+      </article>
+
+      <article class="process-card reveal">
+        <div class="process-no">04</div>
+        <h3 class="process-title">시네마틱 완성</h3>
+        <p class="process-desc">음악과 분위기에 맞춰 완성도 높은 영상으로 제작됩니다.</p>
+      </article>
+
+      <article class="process-card reveal">
+        <div class="process-no">05</div>
+        <h3 class="process-title">최종 전달</h3>
+        <p class="process-desc">완성된 영상을 안전하게 전달드립니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section section-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-kicker">CONTACT</div>
+      <h2>앤위고와 상담하기</h2>
+    </div>
+
+    <div class="contact-wrap reveal">
+      <div class="contact-copy">
+        카카오톡, 인스타그램, 유튜브 채널을 통해<br>
+        앤위고의 분위기와 영상을 먼저 확인해보실 수 있습니다.
+      </div>
+
+      <div class="contact-buttons">
+        <a href="https://open.kakao.com/o/여기코드" target="_blank" class="contact-btn">KAKAO TALK</a>
+        <a href="https://instagram.com/계정아이디" target="_blank" class="contact-btn">INSTAGRAM</a>
+        <a href="https://youtube.com/@채널아이디" target="_blank" class="contact-btn">YOUTUBE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
   © ANDWEGO FILM
 </footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+document.querySelectorAll(".reveal").forEach((el) => {
+  observer.observe(el);
+});
+</script>
 
 </body>
 </html>
