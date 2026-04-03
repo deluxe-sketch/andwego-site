@@ -102,6 +102,7 @@ p {
   line-height: 1.8;
 }
 
+/* FILM */
 .film-section {
   max-width: 1200px;
   margin: 0 auto 90px auto;
@@ -129,90 +130,60 @@ p {
   width: 100%;
   padding-bottom: 56.25%;
   background: #111;
-  overflow: hidden;
 }
 
 .video-wrap iframe {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
 .film-title {
-  margin-top: 14px;
+  margin-top: 12px;
   font-size: 14px;
-  letter-spacing: 1px;
-  color: #fff;
-  opacity: 0.9;
 }
 
-.film-desc {
-  margin-top: 6px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.6;
-}
-
+/* SERVICE / PROCESS */
 .service-list,
-.process-list,
-.contact-list {
+.process-list {
   margin-top: 25px;
   line-height: 2;
 }
 
+/* CONTACT */
+.contact-buttons {
+  margin-top: 40px;
+}
+
+.contact-btn {
+  display: block;
+  width: 280px;
+  margin: 15px auto;
+  padding: 14px;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.contact-btn:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* FOOTER */
 footer {
   padding: 40px;
   text-align: center;
   font-size: 12px;
   opacity: 0.5;
-  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 @media (max-width: 900px) {
   .film-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 36px;
-    letter-spacing: 4px;
-  }
-
-  header a {
-    margin: 0 10px;
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
-  section {
-    padding: 100px 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 16px 8px;
-  }
-
-  header a {
-    margin: 0 6px;
-    font-size: 11px;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-    letter-spacing: 3px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-
-  h2 {
-    font-size: 24px;
   }
 }
 </style>
@@ -253,28 +224,16 @@ footer {
     <div class="film-grid">
       <div class="film-card">
         <div class="video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID_1"
-            title="Highlight Film 1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1"></iframe>
         </div>
         <div class="film-title">Highlight Film 01</div>
-        <div class="film-desc">대표 하이라이트 영상이 들어갈 자리입니다.</div>
       </div>
 
       <div class="film-card">
         <div class="video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID_2"
-            title="Highlight Film 2"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2"></iframe>
         </div>
         <div class="film-title">Highlight Film 02</div>
-        <div class="film-desc">감성적인 분위기의 하이라이트 영상을 연결할 수 있습니다.</div>
       </div>
     </div>
   </div>
@@ -284,28 +243,16 @@ footer {
     <div class="film-grid">
       <div class="film-card">
         <div class="video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID_3"
-            title="Documentary Film 1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"></iframe>
         </div>
         <div class="film-title">Documentary Film 01</div>
-        <div class="film-desc">기록형 본식 영상 또는 예식 중심 영상이 들어갈 자리입니다.</div>
       </div>
 
       <div class="film-card">
         <div class="video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID_4"
-            title="Documentary Film 2"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_4"></iframe>
         </div>
         <div class="film-title">Documentary Film 02</div>
-        <div class="film-desc">긴 호흡의 기록 영상 또는 풀버전 샘플을 연결할 수 있습니다.</div>
       </div>
     </div>
   </div>
@@ -314,29 +261,43 @@ footer {
 <section id="service">
   <h2>SERVICE</h2>
   <div class="service-list">
-    시네마틱 웨딩 영상<br>
-    하이라이트 필름<br>
-    기록 영상<br>
-    맞춤형 촬영 구성
+    <strong>HIGHLIGHT FILM</strong><br>
+    감정을 담은 시네마틱 웨딩 영상<br><br>
+
+    <strong>DOCUMENTARY FILM</strong><br>
+    예식 전체를 담는 기록 영상<br><br>
+
+    <strong>CUSTOM PACKAGE</strong><br>
+    촬영 구성 및 맞춤형 진행
   </div>
 </section>
 
 <section id="process">
   <h2>PROCESS</h2>
   <div class="process-list">
-    상담 및 일정 확인<br>
-    촬영 구성 안내<br>
-    웨딩 촬영 진행<br>
-    편집 및 수정<br>
-    최종 영상 전달
+    <strong>01 상담 및 일정 안내</strong><br>
+    고객님의 일정과 예식 흐름을 충분히 파악합니다<br><br>
+
+    <strong>02 촬영 구성 설계</strong><br>
+    예식에 맞는 촬영 동선과 스타일을 안내드립니다<br><br>
+
+    <strong>03 웨딩 촬영 진행</strong><br>
+    자연스러운 순간을 중심으로 안정적으로 촬영합니다<br><br>
+
+    <strong>04 시네마틱 완성</strong><br>
+    음악과 분위기에 맞춰 완성도 높은 영상으로 제작됩니다<br><br>
+
+    <strong>05 최종 전달</strong><br>
+    완성된 영상을 안전하게 전달드립니다
   </div>
 </section>
 
 <section id="contact">
   <h2>CONTACT</h2>
-  <div class="contact-list">
-    카카오톡 / 인스타그램 문의<br>
-    빠른 상담 가능합니다
+  <div class="contact-buttons">
+    <a href="https://open.kakao.com/o/여기코드" target="_blank" class="contact-btn">KAKAO TALK</a>
+    <a href="https://instagram.com/계정아이디" target="_blank" class="contact-btn">INSTAGRAM</a>
+    <a href="https://youtube.com/@채널아이디" target="_blank" class="contact-btn">YOUTUBE</a>
   </div>
 </section>
 
