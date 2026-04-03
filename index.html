@@ -14,23 +14,36 @@ body {
   color: #fff;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding: 20px 10px;
   text-align: center;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(5px);
+  z-index: 1000;
 }
 
 header a {
-  margin: 0 20px;
+  margin: 0 18px;
   color: #fff;
   text-decoration: none;
   font-size: 13px;
   letter-spacing: 2px;
+}
+
+header a:hover {
+  color: #d4af37;
 }
 
 .hero {
@@ -41,16 +54,19 @@ header a {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 0 20px;
 }
 
 .hero h1 {
   font-size: 48px;
   letter-spacing: 6px;
+  margin: 0;
 }
 
 .hero p {
-  margin-top: 15px;
-  opacity: 0.8;
+  margin-top: 18px;
+  opacity: 0.85;
+  font-size: 16px;
 }
 
 .btn {
@@ -60,6 +76,7 @@ header a {
   color: #d4af37;
   text-decoration: none;
   transition: 0.3s;
+  display: inline-block;
 }
 
 .btn:hover {
@@ -75,32 +92,74 @@ section {
 h2 {
   letter-spacing: 3px;
   margin-bottom: 20px;
+  font-size: 28px;
 }
 
 p {
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
   opacity: 0.8;
   line-height: 1.8;
 }
 
+.film-section {
+  max-width: 1200px;
+  margin: 0 auto 90px auto;
+}
+
+.film-category {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  color: #d4af37;
+}
+
 .film-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-.film-item {
-  width: 300px;
-  height: 180px;
-  margin: 15px;
-  background: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.film-card {
+  text-align: left;
 }
 
-.process {
+.video-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #111;
+  overflow: hidden;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.film-title {
+  margin-top: 14px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.film-desc {
+  margin-top: 6px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+}
+
+.service-list,
+.process-list,
+.contact-list {
+  margin-top: 25px;
   line-height: 2;
 }
 
@@ -109,6 +168,52 @@ footer {
   text-align: center;
   font-size: 12px;
   opacity: 0.5;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 900px) {
+  .film-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    letter-spacing: 4px;
+  }
+
+  header a {
+    margin: 0 10px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  section {
+    padding: 100px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 16px 8px;
+  }
+
+  header a {
+    margin: 0 6px;
+    font-size: 11px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+    letter-spacing: 3px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
 }
 </style>
 </head>
@@ -135,41 +240,104 @@ footer {
   <p>
     단순한 기록이 아닌,<br>
     시간이 지나도 다시 보고 싶은 장면을 만듭니다.<br><br>
-    부산 호텔 웨딩 전문 영상 제작<br>
-    앤위고는 프리미엄 웨딩 필름을 제작합니다.
+    부산 호텔 웨딩 전문 영상 제작.<br>
+    앤위고는 감도 높은 프리미엄 웨딩 필름을 제작합니다.
   </p>
 </section>
 
 <section id="film">
   <h2>FILM</h2>
-  <div class="film-grid">
-    <div class="film-item">FILM 01</div>
-    <div class="film-item">FILM 02</div>
-    <div class="film-item">FILM 03</div>
+
+  <div class="film-section">
+    <div class="film-category">HIGHLIGHT FILM</div>
+    <div class="film-grid">
+      <div class="film-card">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID_1"
+            title="Highlight Film 1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="film-title">Highlight Film 01</div>
+        <div class="film-desc">대표 하이라이트 영상이 들어갈 자리입니다.</div>
+      </div>
+
+      <div class="film-card">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID_2"
+            title="Highlight Film 2"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="film-title">Highlight Film 02</div>
+        <div class="film-desc">감성적인 분위기의 하이라이트 영상을 연결할 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="film-section">
+    <div class="film-category">DOCUMENTARY FILM</div>
+    <div class="film-grid">
+      <div class="film-card">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID_3"
+            title="Documentary Film 1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="film-title">Documentary Film 01</div>
+        <div class="film-desc">기록형 본식 영상 또는 예식 중심 영상이 들어갈 자리입니다.</div>
+      </div>
+
+      <div class="film-card">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID_4"
+            title="Documentary Film 2"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="film-title">Documentary Film 02</div>
+        <div class="film-desc">긴 호흡의 기록 영상 또는 풀버전 샘플을 연결할 수 있습니다.</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="service">
   <h2>SERVICE</h2>
-  <p>
+  <div class="service-list">
     시네마틱 웨딩 영상<br>
     하이라이트 필름<br>
-    풀영상 기록<br>
+    기록 영상<br>
     맞춤형 촬영 구성
-  </p>
+  </div>
 </section>
 
-<section id="process" class="process">
+<section id="process">
   <h2>PROCESS</h2>
-  상담 → 예약 → 촬영 → 편집 → 전달
+  <div class="process-list">
+    상담 및 일정 확인<br>
+    촬영 구성 안내<br>
+    웨딩 촬영 진행<br>
+    편집 및 수정<br>
+    최종 영상 전달
+  </div>
 </section>
 
 <section id="contact">
   <h2>CONTACT</h2>
-  <p>
+  <div class="contact-list">
     카카오톡 / 인스타그램 문의<br>
     빠른 상담 가능합니다
-  </p>
+  </div>
 </section>
 
 <footer>
