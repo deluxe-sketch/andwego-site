@@ -6,7 +6,7 @@
 <meta name="description" content="부산 호텔 웨딩 전문 영상, 프리미엄 시네마틱 웨딩영상 제작 앤위고">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
 
 <style>
 :root {
@@ -15,7 +15,6 @@
   --line: rgba(255,255,255,0.08);
   --text: rgba(255,255,255,0.92);
   --muted: rgba(255,255,255,0.65);
-  --gold: #c9a55b;
   --white: #ffffff;
 }
 
@@ -29,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'SUIT', sans-serif;
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -248,7 +247,7 @@ iframe {
   margin: 0;
   font-size: clamp(28px, 4vw, 44px);
   letter-spacing: 5px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--white);
 }
 
@@ -328,7 +327,7 @@ iframe {
   font-size: 15px;
   letter-spacing: 1px;
   color: var(--white);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .film-desc {
@@ -364,7 +363,7 @@ iframe {
   font-size: 16px;
   letter-spacing: 1px;
   color: var(--white);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .info-card p {
@@ -402,7 +401,7 @@ iframe {
   font-size: 15px;
   color: var(--white);
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .process-desc {
@@ -453,14 +452,34 @@ iframe {
 }
 
 .footer {
-  padding: 38px 20px 44px;
+  padding: 42px 20px 50px;
   text-align: center;
   font-size: 12px;
   color: rgba(255,255,255,0.45);
   border-top: 1px solid var(--line);
   background: #030303;
-  letter-spacing: 2px;
+}
+
+.footer-brand {
+  font-size: 13px;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.footer-info {
+  line-height: 2;
+  color: rgba(255,255,255,0.50);
+  font-size: 12px;
   font-weight: 300;
+}
+
+.footer-copy {
+  margin-top: 16px;
+  color: rgba(255,255,255,0.34);
+  font-size: 11px;
+  letter-spacing: 1px;
 }
 
 @keyframes fadeUp {
@@ -538,6 +557,11 @@ iframe {
     width: 100%;
     max-width: 260px;
   }
+
+  .footer-info {
+    font-size: 11px;
+    line-height: 1.9;
+  }
 }
 </style>
 </head>
@@ -546,7 +570,7 @@ iframe {
 
 <header class="header">
   <div class="nav-inner">
-    <a href="#home" class="brand">ANDWEGO FILM</a>
+    <a href="#home" class="brand">ANDWEGO</a>
     <nav class="nav">
       <a href="#home">HOME</a>
       <a href="#about">ABOUT</a>
@@ -747,7 +771,19 @@ iframe {
 </section>
 
 <footer class="footer">
-  © ANDWEGO FILM
+  <div class="footer-brand">ANDWEGO</div>
+  <div class="footer-info">
+    상호명 : 앤위고<br>
+    대표자 : 홍길동<br>
+    사업자등록번호 : 000-00-00000<br>
+    연락처 : 010-0000-0000<br>
+    이메일 : example@email.com<br>
+    인스타그램 : @andwego<br>
+    유튜브 : ANDWEGO
+  </div>
+  <div class="footer-copy">
+    © 2026 ANDWEGO. All Rights Reserved.
+  </div>
 </footer>
 
 <script>
