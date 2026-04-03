@@ -9,7 +9,7 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Arial';
+  font-family: 'Helvetica Neue', sans-serif;
   background: #000;
   color: #fff;
 }
@@ -19,58 +19,96 @@ header {
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.7);
-  padding: 15px;
+  padding: 20px;
   text-align: center;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
 }
 
 header a {
-  margin: 0 15px;
+  margin: 0 20px;
   color: #fff;
   text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-section {
-  padding: 100px 20px;
-  text-align: center;
+  font-size: 13px;
+  letter-spacing: 2px;
 }
 
 .hero {
   height: 100vh;
+  background: url('https://images.unsplash.com/photo-1507504031003-b417219a0fde') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
-h1 {
-  font-size: 42px;
-  letter-spacing: 4px;
+.hero h1 {
+  font-size: 48px;
+  letter-spacing: 6px;
+}
+
+.hero p {
+  margin-top: 15px;
+  opacity: 0.8;
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+section {
+  padding: 120px 20px;
+  text-align: center;
 }
 
 h2 {
+  letter-spacing: 3px;
   margin-bottom: 20px;
 }
 
 p {
+  max-width: 600px;
+  margin: auto;
   opacity: 0.8;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
-button {
-  padding: 12px 24px;
-  border: 1px solid #fff;
-  background: none;
-  color: #fff;
-  margin-top: 20px;
-  cursor: pointer;
+.film-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-button:hover {
-  background: #fff;
-  color: #000;
+.film-item {
+  width: 300px;
+  height: 180px;
+  margin: 15px;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.process {
+  line-height: 2;
+}
+
+footer {
+  padding: 40px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.5;
 }
 </style>
 </head>
@@ -89,7 +127,7 @@ button:hover {
 <section id="home" class="hero">
   <h1>ANDWEGO FILM</h1>
   <p>당신의 가장 아름다운 순간을 영화처럼 기록합니다</p>
-  <button>상담 문의하기</button>
+  <a href="#contact" class="btn">상담 문의</a>
 </section>
 
 <section id="about">
@@ -104,7 +142,11 @@ button:hover {
 
 <section id="film">
   <h2>FILM</h2>
-  <p>대표 영상이 들어갈 영역 (유튜브 링크 연결 예정)</p>
+  <div class="film-grid">
+    <div class="film-item">FILM 01</div>
+    <div class="film-item">FILM 02</div>
+    <div class="film-item">FILM 03</div>
+  </div>
 </section>
 
 <section id="service">
@@ -117,15 +159,9 @@ button:hover {
   </p>
 </section>
 
-<section id="process">
+<section id="process" class="process">
   <h2>PROCESS</h2>
-  <p>
-    상담 및 일정 확인<br>
-    촬영 구성 안내<br>
-    웨딩 촬영 진행<br>
-    편집 및 수정<br>
-    최종 영상 전달
-  </p>
+  상담 → 예약 → 촬영 → 편집 → 전달
 </section>
 
 <section id="contact">
@@ -135,6 +171,10 @@ button:hover {
     빠른 상담 가능합니다
   </p>
 </section>
+
+<footer>
+  © ANDWEGO FILM
+</footer>
 
 </body>
 </html>
